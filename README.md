@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+There are hardwritten codes to login 
+admin: admin@email.com
+password: admin
+
+
+All the requested for the backend are inside comments and will be used when backend is ready
 ## Available Scripts
 
 In the project directory, you can run:
