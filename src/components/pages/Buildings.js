@@ -5,10 +5,10 @@ import useAuth from "../hook/useJwt";
 
 
 
-const Buildings = ()=>{
+const Buildings = () => {
 
     const [buildings, setBuildings] = useState([])
-    const {jwt} = useAuth
+    const { jwt } = useAuth
 
     // handle induvidual building requests
     /*  
@@ -19,31 +19,31 @@ const Buildings = ()=>{
     
     */
 
-    useEffect (()=>{
+    useEffect(() => {
 
         //Bring the data from the backend
 
-          
-          /* 
-          const headers =- new Headers();
-          headers.append("Content-Type", "application/json");
-          headers.append("Authorization", `Bearer ${jwt}`);
 
-          const requestOptions = {
-            method: "GET",
-            headers: headers,
-          }
-          
-          fetch("http://localhost:5000/buildings", requestOptions).then((response) => response.json()).then((data) => {
-            setBuildings(data);} ) .catch((error) => {
-                setClassname("alert alert-danger");
-                setMessage(error.message);
-            });
-        
-        */
-        
+        /* 
+        const headers =- new Headers();
+        headers.append("Content-Type", "application/json");
+        headers.append("Authorization", `Bearer ${jwt}`);
 
-        let enterBuilding= [
+        const requestOptions = {
+          method: "GET",
+          headers: headers,
+        }
+        
+        fetch("http://localhost:5000/buildings", requestOptions).then((response) => response.json()).then((data) => {
+          setBuildings(data);} ) .catch((error) => {
+              setClassname("alert alert-danger");
+              setMessage(error.message);
+          });
+      
+      */
+
+
+        let enterBuilding = [
             {
                 id: 1,
                 name: "John Doe",
@@ -69,12 +69,12 @@ const Buildings = ()=>{
         ]
         setBuildings(enterBuilding)
 
-    },[])
-    return(
+    }, [])
+    return (
         <div className="col-md-10 text-center">
             <h1>Buildings</h1>
             <hr />
-         
+
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -91,7 +91,7 @@ const Buildings = ()=>{
                             <Link className="col" to={`/buildings/${building.id}`} >
                                 <td>{building.name}</td>
                             </Link>
-        
+
                             <td>{building.owner}</td>
                             <td>{building.date}</td>
                             <td>{building.phone}</td>

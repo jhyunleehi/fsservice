@@ -129,8 +129,8 @@ function App() {
         </div>
         <div className="col-md-10">
           <Alert message={message} className={classname} />
-          <Outlet context={{ 
-            setClassname, 
+          <Outlet context={{
+            setClassname,
             setMessage,
             map,
             setMap,
@@ -140,7 +140,7 @@ function App() {
             setSelectedAddress,
             selectedInfo,
             setSelectedInfo,
-             }} />
+          }} />
         </div>
       </div>
     </div>

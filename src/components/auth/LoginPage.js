@@ -1,4 +1,4 @@
-import React, { useContext, useState } from'react';
+import React, { useContext, useState } from 'react';
 import Input from '../form/Input';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import useAuth from '../hook/useJwt';
@@ -8,10 +8,10 @@ const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {setClassname, setMessage} = useOutletContext()
+    const { setClassname, setMessage } = useOutletContext()
     const navigate = useNavigate();
 
-    const {jwt, setJwt} = useAuth()
+    const { jwt, setJwt } = useAuth()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -48,18 +48,18 @@ const LoginPage = () => {
             setAlertMessage(error.message)
         })
         */
-        if(email==="admin@email.com" && password==="admin"){
+        if (email === "admin@email.com" && password === "admin") {
             setClassname(" d-none")
             Cookies.set("jwt", jwt)
             setMessage("")
             setJwt("admin@email.com")
             navigate("/")
 
-        } else{
+        } else {
             setClassname("alert-danger")
             setMessage("Invalid Credentials")
         }
-        
+
     }
 
     return (
@@ -67,23 +67,23 @@ const LoginPage = () => {
             <h2>Login</h2>
             <hr />
             <form onSubmit={handleSubmit}>
-                <Input 
-                title="Email"
-                type="email"
-                className="form-control"
-                name="email"
-                autocomplete="email-new"
-                onChange={e => setEmail(e.target.value)}
-            
+                <Input
+                    title="Email"
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    autocomplete="email-new"
+                    onChange={e => setEmail(e.target.value)}
+
                 />
-                <Input 
-                title="Password"
-                type="password"
-                className="form-control"
-                name="password"
-                autocomplete="password-new"
-                onChange={e => setPassword(e.target.value)}
-            
+                <Input
+                    title="Password"
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    autocomplete="password-new"
+                    onChange={e => setPassword(e.target.value)}
+
                 />
 
                 <hr />
@@ -93,4 +93,4 @@ const LoginPage = () => {
     )
 }
 
-export  default LoginPage;
+export default LoginPage;

@@ -3,10 +3,13 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import useAuth from '../../hook/useJwt';
 
 const KakaoMap = () => {
-    const navigate = useNavigate();
-    const {jwt} = useAuth()
+  // Make a GET request to the REST API
 
-  const {map, setMap, selectedAddress, setSelectedAddress, selectedMarker, setSelectedMarker, selectedInfo,setSelectedInfo} = useOutletContext();
+
+  const navigate = useNavigate();
+  const { jwt } = useAuth()
+
+  const { map, setMap, selectedAddress, setSelectedAddress, selectedMarker, setSelectedMarker, selectedInfo, setSelectedInfo } = useOutletContext();
   const [addresses] = useState([
     {
       address: 'Incheon Bus Terminal',
@@ -20,8 +23,9 @@ const KakaoMap = () => {
     },
   ]);
 
+
   useEffect(() => {
-    
+
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=dd3b98a12bc700e0583223f92fe9a912&autoload=false`;
@@ -51,18 +55,34 @@ const KakaoMap = () => {
             fetchAddressInfo(address);
             //navigate(`/map/${address.id}`)
             navigate('/map/1');
-            
+
           });
 
           marker.setMap(mapInstance);
         });
+
+        fetch('http://jhyunleehi.ipdisk.co.kr:18080/api/v1/iotgateways', { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+          .then(response => response.json())
+          .then((datas) => {
+            datas.forEach((d)=> {
+              const markerPosition = new window.kakao.maps.LatLng(d.y, d.x);
+              const marker = new window.kakao.maps.Marker({          position: markerPosition,         });
+              marker.setMap(mapInstance);
+              console.log(d)
+            })
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+
       });
+
     };
   }, []);
 
   const fetchAddressInfo = async (address) => {
     try {
-      
+
       const info = `Address information for ${address.address}`;
       setSelectedInfo(info);
     } catch (error) {
@@ -79,9 +99,9 @@ const KakaoMap = () => {
   }, [map, selectedMarker]);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' ,height:'74vh'}}>
-      <div  id="map" style={{ width: '100%', height: '90%', border:"none", borderRadius:'3%'}}></div>
-      
+    <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', height: '74vh' }}>
+      <div id="map" style={{ width: '100%', height: '90%', border: "none", borderRadius: '3%' }}></div>
+
     </div>
   );
 };

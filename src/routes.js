@@ -13,43 +13,22 @@ import Buildings from "./components/pages/Buildings";
 
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App />,
-      errorElement: <ErrorPage />,
-      children: [
-        { index: true, element: <Home /> },
-        {
-          path: "/map/:id",
-          element: <SingleBuilding />,
-        },
-        {
-          path: "/employees",
-          element: <Employees />,
-        },
-        {
-          path: "/employees/:id",
-          element: <Employee />,
-        },
-        {
-          path: "/settings",
-          element: <Settings />,
-        },
-        {
-          path: "/buildings",
-          element: <Buildings />,
-        },
-        {
-          path: "/contact",
-          element: <ContactPage />,
-        },
-        {
-          path: "/login",
-          element: <LoginPage />,
-        },
-      ],
-    },
-  ]);
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "/map/:id", element: <SingleBuilding /> },
+      { path: "/employees", element: <Employees /> },
+      { path: "/employees/:id", element: <Employee /> },
+      { path: "/settings", element: <Settings /> },
+      { path: "/buildings", element: <Buildings /> },
+      { path: "/contact", element: <ContactPage /> },
+      { path: "/login", element: <LoginPage /> },
+    ],
+  },
+]);
 
 
-  export default router;
+export default router;
