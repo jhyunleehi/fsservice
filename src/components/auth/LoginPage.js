@@ -53,7 +53,7 @@ const LoginPage = () => {
             Cookies.set("jwt", jwt)
             setMessage("")
             setJwt("admin@email.com")
-            navigate("/")
+            navigate("/home")
 
         } else{
             setClassname("alert-danger")

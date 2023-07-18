@@ -5,6 +5,7 @@ import { RouterProvider} from "react-router-dom";
 import { AuthProvider } from "./components/hook/useJwt";
 import 'bootstrap/dist/css/bootstrap.css';
 import router from "./routes";
+import { WebProvider } from "./components/hook/useWebsocket";
 
 
 
@@ -12,8 +13,10 @@ import router from "./routes";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <WebProvider>
     <AuthProvider>
       <RouterProvider router={router} />
-    </AuthProvider>  
+    </AuthProvider> 
+    </WebProvider>
   </React.StrictMode>
 );

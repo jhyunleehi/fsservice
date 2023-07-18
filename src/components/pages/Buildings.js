@@ -49,22 +49,24 @@ const Buildings = ()=>{
                 name: "John Doe",
                 address: "Seoul district",
                 phone: "0123456789",
-                owner: "John Doe",
+                status: true,
                 date: "2020-01-01",
             },
             {
                 id: 2,
                 name: "John Doff",
                 email: "kenaa@efdffxample.com",
-                phone: "012345678dfd9",
+                phone: "012345678",
                 address: "1234 Main St",
+                status: true,
             },
             {
                 id: 3,
-                name: "Jfddohn Doe",
-                email: "kenadvdfvda@example.com",
+                name: "Seoul ",
+                date: "2015- 01 Dec",
                 phone: "0123456789",
                 address: "1234 Main St",
+                status: false,
             },
         ]
         setBuildings(enterBuilding)
@@ -79,7 +81,7 @@ const Buildings = ()=>{
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Owner</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Installed Date</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Address</th>
@@ -89,14 +91,16 @@ const Buildings = ()=>{
                     {buildings.map((building) => (
                         <tr key={building.id}>
                             <Link className="col" to={`/buildings/${building.id}`} >
+                           
                                 <td>{building.name}</td>
-                            </Link>
-        
-                            <td>{building.owner}</td>
+                        </Link>
+                            
+                            {building.status? <td>Ok</td> : <td>Broken</td>}
                             <td>{building.date}</td>
                             <td>{building.phone}</td>
                             <td>{building.address}</td>
                             <button className="btn btn-primary" >Update</button>
+                          
                         </tr>
                     ))}
                 </tbody>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, useContext } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
@@ -15,7 +15,6 @@ function App() {
   const [selectedInfo, setSelectedInfo] = useState(null);
   const [ticking, setTicking] = useState(false);
   const navigate = useNavigate();
-
   const handleLogout = (e) => {
     setJwt("");
     //This is logout logic that deletes the jwt token
@@ -93,7 +92,7 @@ function App() {
               {jwt !== "" && (
                 <>
                   <Link
-                    to="/"
+                    to="/home"
                     className="list-group-item list-group-item-action"
                   >
                     Dashboard
